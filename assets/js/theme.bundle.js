@@ -212,11 +212,13 @@
 	},
 ]);
 
+
 var scroll = 0;
 var active = false;
 
 $(function() {
     $(window).bind('mousewheel', function(event, delta) {
+		console.log(event);
 		if (scroll + event.originalEvent.deltaY >= 0 && scroll + event.originalEvent.deltaY <= 3000)
 			scroll += event.originalEvent.deltaY;
 		if (scroll >= 800) {

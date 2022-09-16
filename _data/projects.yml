@@ -1,0 +1,48 @@
+- title: "forté: The Remote Keyboard Tutoring System"
+  id: remote-keyboard-tutoring-system
+  description: forté is a web-based system that can be attached to any (electronic) keyboard synthesizer through a MIDI connector. Once our system is connected to the keyboard, the user can interactively learn, play or teach in combination with the web application that we provide.
+  thumbnail: thumbnail.gif
+  highlight: true
+  scope: Embedded Systems
+  technologies:
+  year: 2021
+- title: Sobriety Detection using Mobile Phone Gyroscope Data
+  id: sobriety-detection-using-mobile-phone-gyroscope-data
+  description: An intelligent API which is capable of passively tracking gyroscopic data to classify sobriety level in real-time that will help minimize risks of drunk-riding accidents for e-scooter sharing systems.
+  thumbnail: thumbnail.png
+  highlight: true
+  scope: Machine Learning
+  technologies: Python, Scikit-learn, TensorFlow
+  year: 2022
+- title: Conversational Transformer Chatbot
+  id: conversational-transformer-chatbot
+  description: This project was done as part of the final honors assignment in Natural Language Processing course on Coursera. In this project, I've built a conversational chatbot that can understand and respond to natural language questions.
+  thumbnail: thumbnail.png
+  highlight: true
+  scope: Natural Language Processing
+  technologies: Python, TensorFlow, Keras, NLTK
+  year: 2022
+- title: A License Plate Recognition (NPR) System
+  id: license-plate-recognition-system
+  description: This project was done as an assignment in the course "Image Processing (CO543)" offered by the Department of Computer Engineering, University of Peradeniya. The main objective of this project was to develop a license plate recognition system that can detect and recognize license plates in images. The system was developed using OpenCV and Python.
+  thumbnail: thumbnail.png
+  highlight: true
+  scope: Image Processing
+  technologies: Python, OpenCV
+  year: 2022
+- title: Fractals Generator
+  id: fractals-generator
+  description: This is the first project for the 2nd year course CO225 (Introduction to Java Programming). The aim of the project was to build a GUI application that can plot two of the most popular fractals, Mandelbrot set and the Julia set using inheritance as much as possible.
+  thumbnail: thumbnail.png
+  highlight: true
+  scope: Computer Graphics
+  technologies: Java
+  year: 2020
+- title: Compiler for COOL programming language
+  id: compiler-for-cool-programming-language
+  description: This is the final project for the 3rd year course CO521 (Compiler Design). The aim of the project was to build a compiler for the COOL programming language. The compiler was developed using C++ and Flex.
+  thumbnail: thumbnail.png
+  highlight: true
+  scope: Compiler Design
+  technologies: C++, Flex
+  year: 2021
