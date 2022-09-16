@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+{% include head.html %}
+<body>
+    <div data-scroll-container>
+        {% include navbar.html %}
+        {{ content }}
+        {% include footer.html %}
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Theme JS -->
+    <!-- Vendor JS -->
+    <script src="{{ 'assets/js/vendor.bundle.js' | relative_url }}"></script>
+    
+    <!-- Theme JS -->
+    <script src="{{ 'assets/js/theme.bundle.js' | relative_url }}"></script>
+</body>
+</html>

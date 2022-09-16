@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center justify-content-center flex-column col-lg-7 col-xl-6 col-xxl-5 text-center mx-auto mt-5 px-4 px-md-0 mt-lg-10" data-scroll-section>
+    <h4 class="display-5 mb-5" data-scroll data-scroll-speed=".8" data-scroll-delay="0.05">Ready to discuss your project requirements?</h4>
+    <a href="./contact.html" class="btn btn-primary">Get In Touch</a>
+</div>
+
+<footer class="border-top mt-10 pt-5 pb-8  " data-scroll-section>
+<div class="container d-flex justify-content-between">
+    <p class="small">All rights reserved. © Sathira Silva 2021.</p>
+    <ul class="list-unstyled d-flex align-items-center">
+        {% assign links = site.data.social %}
+        {% for link in links %}
+            <li class="ms-3"><a class="text-decoration-none text-muted" target="_blank" href="{{ link.url }}"><i class="ri-{{ link.name }}-fill"></i></a></li>
+        {% endfor %}
+    </ul>
+</div>
+</footer>
