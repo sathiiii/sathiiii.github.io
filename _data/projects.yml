@@ -6,6 +6,7 @@
   scope: Embedded Systems
   technologies:
   year: 2021
+  url: https://cepdnaclk.github.io/e17-3yp-remote-keyboard-tutoring-system/
 - title: Sobriety Detection using Mobile Phone Gyroscope Data
   id: sobriety-detection-using-mobile-phone-gyroscope-data
   description: An intelligent API which is capable of passively tracking gyroscopic data to classify sobriety level in real-time that will help minimize risks of drunk-riding accidents for e-scooter sharing systems.
@@ -14,6 +15,7 @@
   scope: Machine Learning
   technologies: Python, Scikit-learn, TensorFlow
   year: 2022
+  url: https://github.com/cepdnaclk/e17-co328-Sobriety-Detection-Using-Mobile-Phone-Gyroscope-Data
 - title: Conversational Transformer Chatbot
   id: conversational-transformer-chatbot
   description: This project was done as part of the final honors assignment in Natural Language Processing course on Coursera. In this project, I've built a conversational chatbot that can understand and respond to natural language questions.
@@ -22,6 +24,7 @@
   scope: Natural Language Processing
   technologies: Python, TensorFlow, Keras, NLTK
   year: 2022
+  url: https://github.com/sathiiii/conversational-transformer-chatbot
 - title: A License Plate Recognition (NPR) System
   id: license-plate-recognition-system
   description: This project was done as an assignment in the course "Image Processing (CO543)" offered by the Department of Computer Engineering, University of Peradeniya. The main objective of this project was to develop a license plate recognition system that can detect and recognize license plates in images. The system was developed using OpenCV and Python.
@@ -30,6 +33,7 @@
   scope: Image Processing
   technologies: Python, OpenCV
   year: 2022
+  url: https://github.com/cepdnaclk/e17-co543-Mini-Project-Group-H
 - title: Fractals Generator
   id: fractals-generator
   description: This is the first project for the 2nd year course CO225 (Introduction to Java Programming). The aim of the project was to build a GUI application that can plot two of the most popular fractals, Mandelbrot set and the Julia set using inheritance as much as possible.
@@ -38,6 +42,7 @@
   scope: Computer Graphics
   technologies: Java
   year: 2020
+  url: https://github.com/sathiiii/Fractals-Generator
 - title: Compiler for COOL programming language
   id: compiler-for-cool-programming-language
   description: This is the final project for the 3rd year course CO521 (Compiler Design). The aim of the project was to build a compiler for the COOL programming language. The compiler was developed using C++ and Flex.
@@ -46,3 +51,13 @@
   scope: Compiler Design
   technologies: C++, Flex
   year: 2021
+  url: https://github.com/sathiiii/cool-compiler
+- title: 8-bit Single Cycle Processor
+  id: 8-bit-single-cycle-processor
+  description: Design of a simple 8-bit single-cycle processor which includes an ALU, a register file and control logic, and a a memory sub-system using Verilog HDL.
+  thumbnail: thumbnail.png
+  highlight: false
+  scope: Computer Architecture
+  technologies: Verilog HDL
+  year: 2021
+  url: https://github.com/sathiiii/Verilog-HDL-8-bit-Single-Cycle-Processor

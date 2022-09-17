@@ -1,0 +1,37 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<!-- Main Section-->
+<section class="container py-3 " data-scroll-section>
+    <!-- Page Content Goes Here -->
+
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">My Projects</h1>
+
+    <div class="row g-8" data-scroll data-scroll-position="bottom">
+        {% assign projects = site.data.projects %}
+        {% for project in projects %}
+        <!-- Single Work-->
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-6 fade-in-left">
+                <div class="position-relative">
+                    <a class="link-cover" href="{{ project.url }}">
+                        <picture>
+                            <img class="img-fluid" src='{{ project.id | append: "/" | append: project.thumbnail | prepend: "assets/images/projects/" | relative_url }}' alt="{{ project.title }}" />
+                        </picture>
+                    </a>
+                    <p class="subtitle-xs mb-0 mt-4"><span class='me-2'>{{ project.scope }}</span> &middot; <span
+                            class='ms-2'>{{ project.technologies }}</span></p>
+                    <p class="fw-bolder lead mb-3 mt-2">{{ project.title }}</p>
+                    <p class="small text-muted mb-2">{{ project.description }}</p>
+                    <a class="link-body" href="{{ project.url }}" target="_blank">View Project</a>
+                </div>
+            </div>
+        <!-- / Single Work -->
+        {% endfor %}
+    </div>
+
+    <!-- /Page Content -->
+</section>
+<!-- / Main Section-->

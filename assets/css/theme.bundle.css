@@ -52,6 +52,13 @@ body .border-top {
   text-transform: uppercase;
   font-size: 0.875em;
 }
+
+.subtitle-lg {
+  color: #94a3b8;
+  letter-spacing: 0.18em;
+  font-size: 1.4rem;
+}
+
 .subtitle-xs {
   font-size: 13px;
   font-weight: 500;
