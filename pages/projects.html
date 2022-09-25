@@ -18,7 +18,7 @@ permalink: /projects/
                 <div class="position-relative">
                     <a class="link-cover" href="{{ project.url }}">
                         <picture>
-                            <img class="img-fluid" src='{{ project.id | append: "/" | append: project.thumbnail | prepend: "assets/images/projects/" | relative_url }}' alt="{{ project.title }}" />
+                            <img class="img-fluid" src='{{ project.id | append: "/" | append: project.thumbnail | prepend: "assets/images/projects/" | relative_url }}' alt="{{ project.title }}" style="border-radius: 10px" />
                         </picture>
                     </a>
                     <p class="subtitle-xs mb-0 mt-4"><span class='me-2'>{{ project.scope }}</span> &middot; <span

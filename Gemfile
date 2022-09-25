@@ -9,6 +9,7 @@ gem 'eventmachine', :git => 'https://github.com/eventmachine/eventmachine.git', 
 gem "jekyll"
 gem "wdm"
 gem "webrick"
+gem 'jekyll-feed'
 
 group :jekyll_plugins do
   gem "jekyll-sitemap"
