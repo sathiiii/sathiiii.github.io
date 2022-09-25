@@ -13,8 +13,13 @@ permalink: /projects/
     <div class="row g-8" data-scroll data-scroll-position="bottom">
         {% assign projects = site.data.projects %}
         {% for project in projects %}
+        {% assign remainder = forloop.index | modulo: 2 %}
         <!-- Single Work-->
+            {% if remainder == 0 %}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-6 fade-in-right">
+            {% else %}
             <div data-scroll data-scroll-position="bottom" class="col-12 col-md-6 fade-in-left">
+            {% endif %}
                 <div class="position-relative">
                     <a class="link-cover" href="{{ project.url }}">
                         <picture>

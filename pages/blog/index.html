@@ -1,5 +1,5 @@
 ---
-layout: blank
+layout: default
 title: Blog Posts
 permalink: /blog/
 ---
@@ -8,9 +8,33 @@ permalink: /blog/
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">Blog Posts</h1>
+    <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
+    <h3  data-scroll data-scroll-speed="2" data-scroll-position="top"><span class="text-highlight">Explore by</span> category</h3>
 
-    <h3>This page is still under construction.</h3>
+    {% assign categories = site.data.blog %}
+    {% assign n = categories.size | divided_by: 4 %}
+    {% assign rem = categories.size | modulo: 4 %}
+    {% if rem > 0 %}
+    {% assign n = n | plus: 1 %}
+    {% endif %}
+    {% for i in (0..n) %}
+        <div class="row mt-8">
+            {% assign m = i | times: 4 %}
+            {% assign k = m | plus: 3 %}
+            {% for j in (m..k) %}
+            {% assign category = categories[j] %}
+            {% if category %}
+                <div class="col align-self-start">
+                    <a class="blog-category-card" href="{{ category.permalink }}">
+                        <h4 style="font-size: 1.5rem;">{{ category.category }}</h4>
+                        <small class="text-muted" style="font-size: 0.95rem">{{ category.description }}</small>
+                        <i class="fa fa-arrow-right blog-category-card-icon" style="align-self: flex-end; margin-top: auto;"></i>
+                    </a>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
 
     <!-- /Page Content -->
 </section>

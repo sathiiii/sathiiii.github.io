@@ -24301,3 +24301,30 @@ p {
 	animation: popup-rev 0.3s ease-in-out, rotate-rev 0.3s ease-in-out;
 	animation-fill-mode: forwards;
 }
+
+.blog-category-card {
+	height: 280px !important;
+	width: 230px !important;
+	background: var(--theme-body-color) !important;
+	border-radius: 10px !important;
+	margin: 0 auto !important;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	color: var(--theme-body-bg) !important;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+@keyframes swing-right {
+	0% {
+		transform: translateX(-3px);
+	}
+	100% {
+		transform: translateX(3px);
+	}
+}
+
+.blog-category-card:hover > .blog-category-card-icon {
+	animation: swing-right 0.8s ease-in-out infinite alternate;
+}

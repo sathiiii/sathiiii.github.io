@@ -1,0 +1,25 @@
+- category: "DSA"
+  description: "Blog posts related to Data Structures and Algorithms"
+  icon: ""
+  permalink: /blog/data-structures-and-algorithms/
+  title: "Blogs on Data Structures and Algorithms"
+- category: "Machine Learning"
+  description: "Blog posts related to Machine Learning"
+  icon: ""
+  permalink: /blog/machine-learning/
+  title: "Blogs on Machine Learning"
+- category: "Past IEEEXtreme Challenges"
+  description: "Deeper dive into past IEEEXtreme challenges and their solutions"
+  icon: ""
+  permalink: /blog/past-ieeeextreme-challenges/
+  title: "Blogs on Past IEEEXtreme Challenges"
+- category: "Hackerrank Challenges"
+  description: "Deeper dive into Hackerrank challenges and their solutions"
+  icon: ""
+  permalink: /blog/hackerrank-challenges/
+  title: "Blogs on Hackerrank Challenges"
+- category: "GPU Programming with CUDA"
+  description: "Blog posts related to GPU Programming with CUDA"
+  icon: ""
+  permalink: /blog/gpu-programming-with-cuda/
+  title: "Blogs on GPU Programming with CUDA"
