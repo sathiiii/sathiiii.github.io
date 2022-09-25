@@ -10,30 +10,33 @@ permalink: /
 
     <div class="container" data-scroll-section>
         <!-- Hero-->
-        <div class="mb-lg-10">
-            <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
-                Hello There!
-            </p>
-            <h1 class="display-1 mb-3" data-scroll data-scroll-speed="4" data-scroll-position="top">
-                I'm Sathira Silva
-            </h1>
-            <p data-scroll data-scroll-speed="6" data-scroll-position="top" class="display-6 lead typed-elem">
-                A Passionate
-                <span class="fw-bold"
-                    data-typed='{"backSpeed": 50,"strings": ["Freelancer", "ML-DL Developer", "Frontend Developer", "Full Stack Developer"]}'></span>
-                    
-            </p>
-            <p data-scroll data-scroll-speed="6" data-scroll-position="top" class="lead">specializing in <span class="text-highlight" style="padding-bottom: 10px;">Computer Engineering </span></p>
-            <div data-scroll data-scroll-speed="6" data-scroll-position="top" class="d-flex justify-content-start pt-2">
-                <a href="#" role="button" class="btn btn-outline-primary" style="margin-right: 2rem"><i class="bi bi-download"></i><span> Download My CV</span></a>
-                <div class="vr"></div>
-                <ul class="list-unstyled d-flex align-items-center mb-0" style="margin-left: 0.8rem">
-                    {% assign links = site.data.social %}
-                    {% for link in links %}
-                        <li class="ms-3"><a class="text-decoration-none text-muted" target="_blank" href="{{ link.url }}"><i class="bi bi-{{ link.name }}"></i></a></li>
-                    {% endfor %}
-                </ul>
+        <div class="d-flex flex-row">
+            <div class="mb-lg-10">
+                <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
+                    Hello There!
+                </p>
+                <h1 class="display-1 mb-3" data-scroll data-scroll-speed="4" data-scroll-position="top">
+                    I'm Sathira Silva
+                </h1>
+                <p data-scroll data-scroll-speed="6" data-scroll-position="top" class="display-6 lead typed-elem">
+                    A Passionate
+                    <span class="fw-bold"
+                        data-typed='{"backSpeed": 50,"strings": ["Freelancer", "ML-DL Developer", "Frontend Developer", "Full Stack Developer"]}'></span>
+                        
+                </p>
+                <p data-scroll data-scroll-speed="6" data-scroll-position="top" class="lead">specializing in <span class="text-highlight" style="padding-bottom: 10px;">Computer Engineering </span></p>
+                <div data-scroll data-scroll-speed="6" data-scroll-position="top" class="d-flex justify-content-start pt-2">
+                    <a href="#" role="button" class="btn btn-outline-primary" style="margin-right: 2rem"><i class="bi bi-download"></i><span> Download My CV</span></a>
+                    <div class="vr"></div>
+                    <ul class="list-unstyled d-flex align-items-center mb-0" style="margin-left: 0.8rem">
+                        {% assign links = site.data.social %}
+                        {% for link in links %}
+                            <li class="ms-3"><a class="text-decoration-none text-muted" target="_blank" href="{{ link.url }}"><i class="bi bi-{{ link.name }}"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
+            <img class="img-fluid" src="{{ 'assets/images/helloworld.gif' | relative_url }}" alt="Hero" data-scroll data-scroll-speed="8" data-scroll-position="top" />
         </div>
         <!-- /Hero-->
 
