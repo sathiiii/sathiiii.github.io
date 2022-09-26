@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Blog Posts
-permalink: /blog/
+title: Posts on Past IEEEXtreme Challenges
+parent: blog
+permalink: /blog/past-ieeeextreme-challenges/
 ---
 
 <!-- Main Section-->
@@ -9,9 +10,15 @@ permalink: /blog/
     <!-- Page Content Goes Here -->
 
     <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
-    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top"><span class="text-highlight">Explore by</span> category</h3>
+    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="align-items-center justify-content-center"><a class="text-decoration-none cursor-pointer align-middle" style="font-size: 1.5rem" href="{{ site.url }}{{ site.baseurl }}/{{ page.parent }}"><i class="fa-solid fa-angle-left"></i> Back</a> <small>|</small> {{ page.title }}</h3>
 
-    {% assign categories = site.data.blog %}
+    {% assign categories = nil %}
+    {% for category in site.data.blog %}
+        {% if category.permalink == "/blog/past-ieeeextreme-challenges/" %}
+            {% assign categories = category.subcategories %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
     {% assign n = categories.size | divided_by: 4 %}
     {% assign rem = categories.size | modulo: 4 %}
     {% if rem > 0 %}

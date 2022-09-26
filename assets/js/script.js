@@ -5,9 +5,10 @@ $(function() {
     $(window).bind('mousewheel', function(event, delta) {
         var body = document.body, html = document.documentElement;
         var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+        var windowHeight = $(window).height();
         if (scroll + event.originalEvent.deltaY >= 0 && scroll + event.originalEvent.deltaY < height)
             scroll += event.originalEvent.deltaY;
-        if (scroll >= 800 && height > $(window).height()) {
+        if (scroll > 1000 && height > windowHeight) {
             active = true;
             $('.dynamic-island').removeClass('nav-hide');
             $('.toggle-btn').removeClass('toggle-btn-hide');

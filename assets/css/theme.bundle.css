@@ -24314,6 +24314,7 @@ p {
 	color: var(--theme-body-bg) !important;
 	cursor: pointer;
 	text-decoration: none;
+  transition: box-shadow 0.4s ease-in-out;
 }
 
 @keyframes swing-right {
@@ -24327,4 +24328,17 @@ p {
 
 .blog-category-card:hover > .blog-category-card-icon {
 	animation: swing-right 0.8s ease-in-out infinite alternate;
+}
+
+.blog-category-card:hover {
+  box-shadow:
+  0.2px 0.7px 1.6px rgba(0, 0, 0, 0.034),
+  0.5px 1.5px 3.6px rgba(0, 0, 0, 0.049),
+  0.9px 2.6px 6.3px rgba(0, 0, 0, 0.06),
+  1.5px 4.1px 10px rgba(0, 0, 0, 0.07),
+  2.3px 6.4px 15.5px rgba(0, 0, 0, 0.08),
+  3.6px 9.9px 24.1px rgba(0, 0, 0, 0.091),
+  6px 16.5px 40px rgba(0, 0, 0, 0.106),
+  12px 33px 80px rgba(0, 0, 0, 0.14)
+;
 }
