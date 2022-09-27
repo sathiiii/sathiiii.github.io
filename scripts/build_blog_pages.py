@@ -72,7 +72,7 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
             <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-down">
             {{% else %}}
             <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-left">
-            {{% endif %}}
+            {{% endif %}} 
                 <div class="position-relative">
                     <a class="link-cover" href="{{{{ post.permalink }}}}">
                         <picture>
