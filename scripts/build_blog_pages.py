@@ -1,3 +1,4 @@
+from turtle import pos
 import yaml
 import os
 import shutil
@@ -18,23 +19,121 @@ def reset_directories(blog_dir):
         for dir in dirs:
             shutil.rmtree(os.path.join(root, dir))
 
-def build_page_templates(blog_data, blog_dir):
+def build_page_templates(blog_data, blog_dir, root_dir):
     """Builds the page templates for the blog pages"""
     if not blog_data: return
     for category in blog_data:
-        if 'pages' in category:
-            for page in category['pages'] and len(category['pages']) > 0:
-                blog_page = \
+        if 'posts' in category and len(category['posts']) > 0:
+            blog_home =\
 f"""\
 ---
 layout: default
-title: {page['title']}
-permalink: {category['permalink']}/{page['permalink']}
+title: {category['title']}
+permalink: {category['permalink']}
+default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
+<!-- Main Section-->
+<section class="container py-3 " data-scroll-section>
+    <!-- Page Content Goes Here -->
+
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">{{{{ page.title }}}}</h1>
+
+        <div class="row g-8" data-scroll data-scroll-position="bottom">
+        {{% assign blog_data = site.data.blog %}}
+        {{% assign posts = nil %}}
+        {{% for category in blog_data %}}
+            {{% if category.subcategories %}}
+                <!-- Only two levels of subcategories are assumed -->
+                {{% for subcategory in category.subcategories %}}
+                    {{% if subcategory.posts %}}
+                        {{% assign posts = subcategory.posts %}}
+                        {{% break %}}
+                    {{% endif %}}
+                    {{% if subcategory.subcategories %}}
+                        {{% for subsubcategory in subcategory.subcategories %}}
+                            {{% if subsubcategory.posts %}}
+                                {{% assign posts = subsubcategory.posts %}}
+                                {{% break %}}
+                            {{% endif %}}
+                        {{% endfor %}}
+                    {{% endif %}}
+                {{% endfor %}}
+            {{% elsif category.posts %}}
+                {{% assign posts = category.posts %}}
+                {{% break %}}
+            {{% endif %}}
+        {{% endfor %}}
+        {{% for post in posts %}}
+        {{% assign remainder = forloop.index | modulo: 3 %}}
+            {{% if remainder == 0 %}}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-right">
+            {{% else if remainder == 1 %}}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-down">
+            {{% else %}}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-left">
+            {{% endif %}}
+                <div class="position-relative">
+                    <a class="link-cover" href="{{{{ post.permalink }}}}">
+                        <picture>
+                            {{% capture cover_img %}}
+                                {{% file_exists {{{{ post.image | relative_url }}}} %}}
+                            {{% endcapture %}}
+                            {{% if cover_img == 'true' %}}
+                                <img class="img-fluid" src='{{{{ post.image | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px" />
+                            {{% else %}}
+                                {{% assign rand = "now" | date: "%s%N" | modulo: 3 %}}
+                                {{% assign cover_imgs = page.default_cover_imgs %}}
+                                <img class="img-fluid" src='{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px" />
+                            {{% endif %}}
+                        </picture>
+                    </a>
+                    <p class="subtitle-xs mb-0 mt-4">
+                        <span class='me-2'>{{{{ post.tags[0] }}}}</span> &middot; <span class='ms-2'>{{{{ post.tags[1] }}}}</span>
+                    </p>
+                    <p class="fw-bolder lead mb-3 mt-2">{{{{ post.title }}}}</p>
+                    <p class="small text-muted mb-2">{{{{ post.summary }}}}</p>
+                    <a class="link-body" href="{{{{ post.permalink }}}}">See Post</a>
+                </div>
+            </div>
+        {{% endfor %}}
+    </div>
+
+    <!-- /Page Content -->
+</section>
 """
-                with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{page['permalink'].split('/')[-2]}.html"), 'w') as f:
-                    f.write(blog_page)
+            with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], 'index.html'), 'w') as f:
+                f.write(blog_home)
+            for post in category['posts']:
+                img_path = os.path.join(root_dir, '/'.join(post['image'].split('/')[:-1]))
+                if not os.path.exists(img_path):
+                    os.makedirs(img_path)
+                if not os.path.exists(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{post['permalink'].split('/')[-2]}.html")):
+                    blog_page = \
+f"""\
+---
+layout: default
+title: {post['title']}
+permalink: {post['permalink']}
+---
+
+<!-- Main Section-->
+<section class="container py-3 " data-scroll-section>
+    <!-- Page Content Goes Here -->
+
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">{{{{ page.title }}}}</h1>
+
+    <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
+    <div class="col text-center">
+        <h4 class="text-muted">This blog post will be available soon.</h4>
+    </div>
+</div>
+
+    <!-- /Page Content -->
+</section>
+"""
+                    with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{post['permalink'].split('/')[-2]}.html"), 'w') as f:
+                        f.write(blog_page)
         elif 'subcategories' in category:
             blog_home = \
 f"""\
@@ -88,7 +187,7 @@ permalink: {category['permalink']}
 """
             with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], "index.html"), 'w') as f:
                 f.write(blog_home)
-            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]))
+            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]), root_dir)
         else:
             blog_home = \
 f"""\
@@ -120,5 +219,5 @@ if __name__ == '__main__':
     with open('../_data/blog.yml', 'r') as f:
         blog_data = yaml.safe_load(f)
     build_directories(blog_data, '../pages/blog')
-    build_page_templates(blog_data, '../pages/blog')
+    build_page_templates(blog_data, '../pages/blog', '..')
     # reset_directories('../pages/blog')
