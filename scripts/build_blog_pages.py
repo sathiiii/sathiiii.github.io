@@ -156,8 +156,8 @@ permalink: {category['permalink']}
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="align-items-center justify-content-center"><a class="text-decoration-none cursor-pointer align-middle" style="font-size: 1.5rem" href="{{{{ site.url }}}}{{{{ site.baseurl }}}}/{{{{ page.parent }}}}"><i class="fa-solid fa-angle-left"></i> Back</a> <small>|</small> {{{{ page.title }}}}</h3>
     <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
+    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="align-items-center justify-content-center"><a class="text-decoration-none cursor-pointer align-middle" style="font-size: 1.5rem" href="{{{{ site.url }}}}{{{{ site.baseurl }}}}/{{{{ page.parent }}}}"><i class="fa-solid fa-angle-left"></i> Back</a> <small>|</small> {{{{ page.title }}}}</h3>
 
     {{% assign categories = nil %}}
     {{% for category in site.data.blog %}}
