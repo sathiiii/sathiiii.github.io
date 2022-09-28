@@ -19,10 +19,15 @@ def reset_directories(blog_dir):
         for dir in dirs:
             shutil.rmtree(os.path.join(root, dir))
 
-def build_page_templates(blog_data, blog_dir, root_dir):
+def build_page_templates(blog_data, blog_dir, root_dir, ancestor_tree={'Home': '/', 'Blog': '/blog'}, prev='Blog'):
     """Builds the page templates for the blog pages"""
     if not blog_data: return
     for category in blog_data:
+        breadcrumb = ""
+        for ancestor in ancestor_tree:
+            breadcrumb += f"""<a href="{ancestor_tree[ancestor]}" class="text-decoration-none">{ancestor}</a>
+        <i class="fa fa-angle-right"></i>
+"""
         if 'posts' in category and len(category['posts']) > 0:
             blog_home =\
 f"""\
@@ -37,9 +42,12 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">{{{{ page.title }}}}</h1>
+    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="text-muted" style="font-size: 1.8rem;">
+        { breadcrumb }
+    </h3>
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="2" data-scroll-position="top">{{{{ page.title }}}}</h1>
 
-        <div class="row g-8" data-scroll data-scroll-position="bottom">
+    <div class="row g-8" data-scroll data-scroll-position="bottom">
         {{% assign blog_data = site.data.blog %}}
         {{% assign posts = nil %}}
         {{% for category in blog_data %}}
@@ -148,8 +156,8 @@ permalink: {category['permalink']}
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
     <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="align-items-center justify-content-center"><a class="text-decoration-none cursor-pointer align-middle" style="font-size: 1.5rem" href="{{{{ site.url }}}}{{{{ site.baseurl }}}}/{{{{ page.parent }}}}"><i class="fa-solid fa-angle-left"></i> Back</a> <small>|</small> {{{{ page.title }}}}</h3>
+    <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
 
     {{% assign categories = nil %}}
     {{% for category in site.data.blog %}}
@@ -187,7 +195,8 @@ permalink: {category['permalink']}
 """
             with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], "index.html"), 'w') as f:
                 f.write(blog_home)
-            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]), root_dir)
+            ancestor_tree.update({category['category']: f"{ancestor_tree[prev]}/{category['permalink'].split('/')[-2]}"})
+            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]), root_dir, ancestor_tree, prev=category['category'])
         else:
             blog_home = \
 f"""\
@@ -201,8 +210,11 @@ permalink: {category['permalink']}
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3" data-scroll data-scroll-speed="2" data-scroll-position="top">Blog Posts</h1>
-    <h3  data-scroll data-scroll-speed="2" data-scroll-position="top">{{{{ page.title }}}}</h3>
+    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="text-muted" style="font-size: 1.8rem;">
+        { breadcrumb }
+    </h3>
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="2" data-scroll-position="top">{{{{ page.title }}}}</h1>
+
     <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
         <div class="col text-center">
             <h4 class="text-muted">No posts yet</h4>
