@@ -8,17 +8,39 @@ permalink: /projects/
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">My Projects</h1>
+    <div data-scroll data-scroll-speed="4" data-scroll-position="top" class="d-flex justify-content-between align-items-center">
+        <h1 class="display-3">My Projects</h1>
+        <div class="searchBox">
+            <input class="searchInput" type="text" name="" placeholder="Search projects">
+            <button class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+    {% assign projects = site.data.projects %}
+    {% assign tags = "" | split: ',' %}
+    {% for project in projects %}
+        {% assign scope = project.scope | remove: ' ' %}
+        {% assign tags = tags | push: scope %}
+        {% assign technologies = project.technologies | split: ', ' %}
+        {% assign tags = tags | concat: technologies %}
+    {% endfor %}
+    {% assign tags = tags | uniq | sort %}
+    <div data-scroll data-scroll-speed="3" data-scroll-position="top" class="chipset mt-4 mb-5 d-flex justify-content-start flex-wrap">
+        <span class="chip chip-active mx-2 my-2" data-tag="all">#All</span>
+        {% for tag in tags %}
+            <span class="chip mx-2 my-2" data-tag="{{ tag }}">#{{ tag }}</span>
+        {% endfor %}
+    </div>
 
     <div class="row g-8" data-scroll data-scroll-position="bottom">
-        {% assign projects = site.data.projects %}
         {% for project in projects %}
         {% assign remainder = forloop.index | modulo: 2 %}
         <!-- Single Work-->
             {% if remainder == 0 %}
-            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-6 fade-in-right">
+            <div data-scroll data-scroll-position="bottom" data-scope="{{ project.scope | remove: ' ' }}" data-technologies="{{ project.technologies }}" data-title="{{ project.title }}" data-description="{{ project.description }}" class="chip-content col-12 col-md-6 fade-in-right">
             {% else %}
-            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-6 fade-in-left">
+            <div data-scroll data-scroll-position="bottom" data-scope="{{ project.scope | remove: ' ' }}" data-technologies="{{ project.technologies }}" data-title="{{ project.title }}" data-description="{{ project.description }}" class="chip-content col-12 col-md-6 fade-in-left">
             {% endif %}
                 <div class="position-relative">
                     <a class="link-cover" href="{{ project.url }}">
@@ -26,8 +48,11 @@ permalink: /projects/
                             <img class="img-fluid" src='{{ project.id | append: "/" | append: project.thumbnail | prepend: "assets/images/projects/" | relative_url }}' alt="{{ project.title }}" style="border-radius: 10px" />
                         </picture>
                     </a>
-                    <p class="subtitle-xs mb-0 mt-4"><span class='me-2'>{{ project.scope }}</span> &middot; <span
-                            class='ms-2'>{{ project.technologies }}</span></p>
+                    <p class="subtitle-xs mb-0 mt-4"><span class='me-2'>{{ project.scope }}</span>
+                        {% if project.technologies %}
+                            &middot; <span class='ms-2'>{{ project.technologies }}</span>
+                        {% endif %}
+                    </p>
                     <p class="fw-bolder lead mb-3 mt-2">{{ project.title }}</p>
                     <p class="small text-muted mb-2">{{ project.description }}</p>
                     <a class="link-body" href="{{ project.url }}" target="_blank">View Project</a>
