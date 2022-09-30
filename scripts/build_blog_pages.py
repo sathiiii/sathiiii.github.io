@@ -19,7 +19,7 @@ def reset_directories(blog_dir):
         for dir in dirs:
             shutil.rmtree(os.path.join(root, dir))
 
-def build_page_templates(blog_data, blog_dir, root_dir, ancestor_tree={'Home': '/', 'Blog': '/blog'}, prev='Blog'):
+def build_page_templates(blog_data, blog_dir, root_dir, ancestor_tree={'Home': '/', 'Blog': '/blog'}, prev='Blog', force_create=False):
     """Builds the page templates for the blog pages"""
     if not blog_data: return
     for category in blog_data:
@@ -112,24 +112,58 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 """
             with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], 'index.html'), 'w') as f:
                 f.write(blog_home)
+            breadcrumb += f"""<a href="{category['permalink']}" class="text-decoration-none">{category['title']}</a>"""
             for post in category['posts']:
                 img_path = os.path.join(root_dir, '/'.join(post['image'].split('/')[:-1]))
                 if not os.path.exists(img_path):
                     os.makedirs(img_path)
-                if not os.path.exists(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{post['permalink'].split('/')[-2]}.html")):
+                if force_create or not os.path.exists(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{post['permalink'].split('/')[-2]}.html")):
                     blog_page = \
 f"""\
 ---
 layout: default
 title: {post['title']}
 permalink: {post['permalink']}
+tags: {post['tags']}
+image: {post['image']}
+default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
 <!-- Main Section-->
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">{{{{ page.title }}}}</h1>
+    <div class="container">
+        <p data-scroll data-scroll-speed="2" data-scroll-position="top" class="my-0">{ breadcrumb }</p>
+        <h1 class="display-3 mb-2" data-scroll data-scroll-speed="2" data-scroll-position="top">{{{{ page.title }}}}</h1>
+        <div class="d-flex flex-row justify-content-between">
+            <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
+            {{% for tag in page.tags %}}
+                <span class='me-2'>{{{{ tag }}}}</span>
+                {{% if forloop.last == false %}}
+                    &middot;
+                {{% endif %}}
+            {{% endfor %}}
+            </p>
+            <p class="subtitle-sm text-center" data-scroll data-scroll-speed="2" data-scroll-position="top">
+                <i class="bi bi-clock"></i>
+                <span class='me-2'>5 min read</span>
+            </p>
+        </div>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 2rem;">{post['summary']}</p>
+    </div>
+
+    {{% capture cover_img %}}
+        {{% file_exists {{{{ page.image | relative_url }}}} %}}
+    {{% endcapture %}}
+    {{% if cover_img == 'true' %}}
+        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ page.image | relative_url }}}}')"></div>
+    {{% else %}}
+        {{% assign rand = "now" | date: "%s%N" | modulo: 3 %}}
+        {{% assign cover_imgs = page.default_cover_imgs %}}
+        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}')"></div>
+    {{% endif %}}
+
 
     <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
     <div class="col text-center">
@@ -196,7 +230,8 @@ permalink: {category['permalink']}
             with open(os.path.join(blog_dir, category['permalink'].split('/')[-2], "index.html"), 'w') as f:
                 f.write(blog_home)
             ancestor_tree.update({category['category']: f"{ancestor_tree[prev]}/{category['permalink'].split('/')[-2]}"})
-            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]), root_dir, ancestor_tree, prev=category['category'])
+            build_page_templates(category['subcategories'], os.path.join(blog_dir, category['permalink'].split('/')[-2]), root_dir, ancestor_tree, prev=category['category'], force_create=force_create)
+            del ancestor_tree[category['category']]
         else:
             blog_home = \
 f"""\
@@ -231,5 +266,5 @@ if __name__ == '__main__':
     with open('../_data/blog.yml', 'r') as f:
         blog_data = yaml.safe_load(f)
     build_directories(blog_data, '../pages/blog')
-    build_page_templates(blog_data, '../pages/blog', '..')
+    build_page_templates(blog_data, '../pages/blog', '..', force_create=True)
     # reset_directories('../pages/blog')

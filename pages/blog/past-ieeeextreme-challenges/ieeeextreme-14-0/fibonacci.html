@@ -2,13 +2,52 @@
 layout: default
 title: Fibonacci
 permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/fibonacci/
+tags: ['Dynamic Programming', 'Tabulation', 'Fibonacci']
+image: /assets/images/blog/ieeeextreme-14-0/fibonacci/cover.png
+default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
 <!-- Main Section-->
 <section class="container py-3 " data-scroll-section>
     <!-- Page Content Goes Here -->
 
-    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="6" data-scroll-position="top">{{ page.title }}</h1>
+    <div class="container">
+        <p data-scroll data-scroll-speed="2" data-scroll-position="top" class="my-0"><a href="/" class="text-decoration-none">Home</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog" class="text-decoration-none">Blog</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog/past-ieeeextreme-challenges" class="text-decoration-none">Past IEEEXtreme Challenges</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog/past-ieeeextreme-challenges/ieeeextreme-14-0/" class="text-decoration-none">Posts on IEEEXtreme 14.0</a></p>
+        <h1 class="display-3 mb-2" data-scroll data-scroll-speed="2" data-scroll-position="top">{{ page.title }}</h1>
+        <div class="d-flex flex-row justify-content-between">
+            <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
+            {% for tag in page.tags %}
+                <span class='me-2'>{{ tag }}</span>
+                {% if forloop.last == false %}
+                    &middot;
+                {% endif %}
+            {% endfor %}
+            </p>
+            <p class="subtitle-sm text-center" data-scroll data-scroll-speed="2" data-scroll-position="top">
+                <i class="bi bi-clock"></i>
+                <span class='me-2'>5 min read</span>
+            </p>
+        </div>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 2rem;">Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.</p>
+    </div>
+
+    {% capture cover_img %}
+        {% file_exists {{ page.image | relative_url }} %}
+    {% endcapture %}
+    {% if cover_img == 'true' %}
+        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ page.image | relative_url }}')"></div>
+    {% else %}
+        {% assign rand = "now" | date: "%s%N" | modulo: 3 %}
+        {% assign cover_imgs = page.default_cover_imgs %}
+        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}')"></div>
+    {% endif %}
+
 
     <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
     <div class="col text-center">

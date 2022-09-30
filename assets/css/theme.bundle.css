@@ -24394,6 +24394,7 @@ p {
   box-sizing: content-box;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+  overscroll-behavior: contain;
 }
 
 .chipset::-webkit-scrollbar { 
