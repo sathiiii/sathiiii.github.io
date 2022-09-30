@@ -71,5 +71,5 @@ $(function() {
             }, 350);
         }
         return false;
-    }, { passive: false });
+    });
 });
