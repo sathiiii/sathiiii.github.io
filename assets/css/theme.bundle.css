@@ -16968,7 +16968,7 @@ fieldset:disabled .btn {
   --theme-form-check-bg: #f1f5f9;
   --theme-form-check-checked-bg: #0f172a;
   --theme-darker-primary: #31b681;
-  --theme-chip-bg: #3d3d3d;
+  --theme-chip-bg: #d1d1d1;
   --theme-chip-active-bg: #828282;
 }
 :root[data-mode="dark"] {
@@ -16988,7 +16988,7 @@ fieldset:disabled .btn {
   --theme-form-input-color: #fff;
   --theme-form-check-bg: #1e293b;
   --theme-form-check-checked-bg: var(--theme-darker-primary);
-  --theme-chip-bg: #e8e8e8;
+  --theme-chip-bg: #474747;
   --theme-chip-active-bg: #ababab;
 }
 body {
@@ -24353,16 +24353,14 @@ p {
   height: 40px;
   line-height: 40px;
   border-radius: 25px;
-  background-color: var(--theme-body-color);
-  color: var(--theme-body-bg);
+  background-color: var(--theme-body-bg);
+  color: var(--theme-body-color);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
   text-align: center;
-  box-shadow:
-  0px 0px 5.3px rgba(0, 0, 0, 0.028),
-  0px 0px 17.9px rgba(0, 0, 0, 0.042),
-  0px 0px 80px rgba(0, 0, 0, 0.07)
+  box-shadow: inset 0px 0px 15px -7px var(--theme-body-color);
+  border: 1px solid var(--theme-body-color);
 ;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -24375,17 +24373,70 @@ p {
 	0px 0px 10px rgba(0, 0, 0, 0.075),
 	0px 0px 17.9px rgba(0, 0, 0, 0.089),
 	0px 0px 33.4px rgba(0, 0, 0, 0.108),
-	0px 0px 80px rgba(0, 0, 0, 0.15)
+	0px 0px 80px rgba(0, 0, 0, 0.15),
   ;
   background-color: var(--theme-chip-bg);
 }
 
 .chip-active {
-  background-color: var(--theme-chip-active-bg);
+  background-color: var(--theme-body-color);
+  color: var(--theme-body-bg);
 }
 
 .chip-active:hover {
-  background-color: var(--theme-chip-active-bg);
+  background-color: var(--theme-body-color);
+  color: var(--theme-body-bg);
+}
+
+.chipset {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  box-sizing: content-box;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.chipset::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+.chipset-wrapper {
+  z-index: 2000;
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+.left-arrow, .right-arrow {
+  position: absolute;
+  display: flex;
+  z-index: 2020;
+  height: 100%;
+}
+
+.left-arrow-button, .right-arrow-button {
+  background: var(--theme-body-bg);
+  height: 100%;
+}
+
+.left-arrow::after {
+  background: linear-gradient(to right, var(--theme-body-bg) 20%, transparent 80%);
+}
+
+.right-arrow::before {
+  background: linear-gradient(to left, var(--theme-body-bg) 20%, transparent 80%);
+}
+
+.left-arrow::after, .right-arrow::before {
+  height: 100%;
+  width: 70px;
+  content: '';
+  pointer-events: none;
 }
 
 .searchBox {
@@ -24429,4 +24480,9 @@ p {
     transition: 0.4s;
     line-height: 50px;
     width: 0px;
+}
+
+.searchInput:focus {
+  width: 20rem;
+  padding: 0 6px;
 }

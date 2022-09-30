@@ -26,6 +26,25 @@ $(function() {
             else $(this).css('display', 'none');
         });
     });
+    $('.chipset').scroll(function() {
+        var $elem = $('.chipset');
+        var newScrollLeft = $elem.scrollLeft(),
+            width = $elem.width(),
+            scrollWidth = $elem.get(0).scrollWidth;
+        var offset = 2;
+        if (newScrollLeft == 0) {
+            $('.left-arrow').css('display', 'none');
+            $('.right-arrow').css('display', 'flex');
+        }
+        else if (scrollWidth - newScrollLeft - width < offset) {
+            $('.right-arrow').css('display', 'none');
+            $('.left-arrow').css('display', 'flex');
+        }
+        else {
+            $('.left-arrow').css('display', 'flex');
+            $('.right-arrow').css('display', 'flex');
+        }
+    });
     $(window).bind('mousewheel', function(event, delta) {
         var body = document.body, html = document.documentElement;
         var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
@@ -52,5 +71,5 @@ $(function() {
             }, 350);
         }
         return false;
-    });
+    }, { passive: false });
 });

@@ -26,11 +26,23 @@ permalink: /projects/
         {% assign tags = tags | concat: technologies %}
     {% endfor %}
     {% assign tags = tags | uniq | sort %}
-    <div data-scroll data-scroll-speed="3" data-scroll-position="top" class="chipset mt-4 mb-5 d-flex justify-content-start flex-wrap">
-        <span class="chip chip-active mx-2 my-2" data-tag="all">#All</span>
-        {% for tag in tags %}
-            <span class="chip mx-2 my-2" data-tag="{{ tag }}">#{{ tag }}</span>
-        {% endfor %}
+    <div data-scroll data-scroll-speed="3" data-scroll-position="top" class="chipset-wrapper mt-3 mb-5 d-flex justify-content-center">
+        <div class="left-arrow flex-direction-row justify-content-center align-items-center" style="display: none;">
+            <div class="left-arrow-button d-flex align-items-center">
+                <i class="fa fa-chevron-left"></i>
+            </div>
+        </div>
+        <div class="chipset d-flex justify-content-start">
+            <span class="chip chip-active mx-2 my-2" data-tag="all">All</span>
+            {% for tag in tags %}
+                <span class="chip mx-2 my-2" data-tag="{{ tag }}">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        <div class="right-arrow flex-direction-row justify-content-center align-items-center">
+            <div class="right-arrow-button d-flex align-items-center">
+                <i class="fa fa-chevron-right"></i>
+            </div>
+        </div>
     </div>
 
     <div class="row g-8" data-scroll data-scroll-position="bottom">
