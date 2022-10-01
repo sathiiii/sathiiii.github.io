@@ -3,7 +3,7 @@ layout: default
 title: Fibonacci
 permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/fibonacci/
 tags: ['Dynamic Programming', 'Tabulation', 'Fibonacci']
-image: /assets/images/blog/ieeeextreme-14-0/fibonacci/cover.png
+image: "/assets/images/blog/ieeeextreme-14-0/fibonacci/cover.jpg"
 default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
@@ -34,20 +34,20 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                 <span class='me-2'>5 min read</span>
             </p>
         </div>
-        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 2rem;">Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.</p>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 1.8rem;">Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.</p>
     </div>
 
     {% capture cover_img %}
         {% file_exists {{ page.image | relative_url }} %}
     {% endcapture %}
-    {% if cover_img == 'true' %}
-        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ page.image | relative_url }}')"></div>
+    {% if cover_img contains "true" %}
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ page.image | relative_url }}')"></div>
     {% else %}
         {% assign rand = "now" | date: "%s%N" | modulo: 3 %}
         {% assign cover_imgs = page.default_cover_imgs %}
-        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}')"></div>
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}')"></div>
     {% endif %}
-
+    <p class="text-muted my-2" style="float: right;">Photo by <a href="https://unsplash.com/@milasanpaul?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Paul Milasan</a> on <a href="https://unsplash.com/s/photos/fibonacci?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 
     <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
     <div class="col text-center">

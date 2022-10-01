@@ -60,12 +60,12 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                             {% capture cover_img %}
                                 {% file_exists {{ post.image | relative_url }} %}
                             {% endcapture %}
-                            {% if cover_img == 'true' %}
-                                <img class="img-fluid" src='{{ post.image | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px" />
+                            {% if cover_img contains "true" %}
+                                <img class="img-fluid" src='{{ post.image | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px; object-fit: cover; height: 200px; width: 100%;" />
                             {% else %}
                                 {% assign rand = "now" | date: "%s%N" | modulo: 3 %}
                                 {% assign cover_imgs = page.default_cover_imgs %}
-                                <img class="img-fluid" src='{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px" />
+                                <img class="img-fluid" src='{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px;  object-fit: cover; height: 200px; width: 100%;" />
                             {% endif %}
                         </picture>
                     </a>

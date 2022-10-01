@@ -87,12 +87,12 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                             {{% capture cover_img %}}
                                 {{% file_exists {{{{ post.image | relative_url }}}} %}}
                             {{% endcapture %}}
-                            {{% if cover_img == 'true' %}}
-                                <img class="img-fluid" src='{{{{ post.image | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px" />
+                            {{% if cover_img contains "true" %}}
+                                <img class="img-fluid" src='{{{{ post.image | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px; object-fit: cover; height: 200px; width: 100%;" />
                             {{% else %}}
                                 {{% assign rand = "now" | date: "%s%N" | modulo: 3 %}}
                                 {{% assign cover_imgs = page.default_cover_imgs %}}
-                                <img class="img-fluid" src='{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px" />
+                                <img class="img-fluid" src='{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}' alt="{{{{ post.title }}}}" style="border-radius: 10px;  object-fit: cover; height: 200px; width: 100%;" />
                             {{% endif %}}
                         </picture>
                     </a>
@@ -114,7 +114,7 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                 f.write(blog_home)
             breadcrumb += f"""<a href="{category['permalink']}" class="text-decoration-none">{category['title']}</a>"""
             for post in category['posts']:
-                img_path = os.path.join(root_dir, '/'.join(post['image'].split('/')[:-1]))
+                img_path = root_dir + '/'.join(post['image'].split('/')[:-1])
                 if not os.path.exists(img_path):
                     os.makedirs(img_path)
                 if force_create or not os.path.exists(os.path.join(blog_dir, category['permalink'].split('/')[-2], f"{post['permalink'].split('/')[-2]}.html")):
@@ -125,7 +125,7 @@ layout: default
 title: {post['title']}
 permalink: {post['permalink']}
 tags: {post['tags']}
-image: {post['image']}
+image: "{post['image']}"
 default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
@@ -150,18 +150,18 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                 <span class='me-2'>5 min read</span>
             </p>
         </div>
-        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 2rem;">{post['summary']}</p>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 1.8rem;">{post['summary']}</p>
     </div>
 
     {{% capture cover_img %}}
         {{% file_exists {{{{ page.image | relative_url }}}} %}}
     {{% endcapture %}}
-    {{% if cover_img == 'true' %}}
-        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ page.image | relative_url }}}}')"></div>
+    {{% if cover_img contains "true" %}}
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ page.image | relative_url }}}}')"></div>
     {{% else %}}
         {{% assign rand = "now" | date: "%s%N" | modulo: 3 %}}
         {{% assign cover_imgs = page.default_cover_imgs %}}
-        <div class="my-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}')"></div>
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}}}')"></div>
     {{% endif %}}
 
 
@@ -266,5 +266,5 @@ if __name__ == '__main__':
     with open('../_data/blog.yml', 'r') as f:
         blog_data = yaml.safe_load(f)
     build_directories(blog_data, '../pages/blog')
-    build_page_templates(blog_data, '../pages/blog', '..', force_create=True)
+    build_page_templates(blog_data, '../pages/blog', '..')
     # reset_directories('../pages/blog')
