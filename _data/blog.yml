@@ -3,6 +3,14 @@
   icon: ""
   permalink: /blog/data-structures-and-algorithms/
   title: "Posts on Data Structures and Algorithms"
+  posts:
+  - title: "Solving a Pocket Cube"
+    date: 2022-10-07
+    summary: The 2x2x2 Rubik's Cube, also known as the Pocket Cube, is the smaller version of the Rubik's Cubes which might seem to be a lot easier to solve. But is it really? I will be discussing how to use A star search with many other interesting techniques to efficiently solve the Pocket Cube.
+    permalink: /blog/data-structures-and-algorithms/solving-a-pocket-cube/
+    tags: ["A* Search", "Heuristics", "Rubik's Cube"]
+    category: "DSA"
+    image: /assets/images/blog/data-structures-and-algorithms/solving-a-pocket-cube/cover.jpg
 - category: "Machine Learning"
   description: "Blog posts related to Machine Learning"
   icon: ""

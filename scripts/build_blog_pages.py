@@ -34,6 +34,7 @@ f"""\
 ---
 layout: default
 title: {category['title']}
+category: {category['category']}
 permalink: {category['permalink']}
 default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
@@ -54,20 +55,20 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
             {{% if category.subcategories %}}
                 <!-- Only two levels of subcategories are assumed -->
                 {{% for subcategory in category.subcategories %}}
-                    {{% if subcategory.posts %}}
+                    {{% if subcategory.posts and subcategory.category == page.category %}}
                         {{% assign posts = subcategory.posts %}}
                         {{% break %}}
                     {{% endif %}}
                     {{% if subcategory.subcategories %}}
                         {{% for subsubcategory in subcategory.subcategories %}}
-                            {{% if subsubcategory.posts %}}
+                            {{% if subsubcategory.posts and subsubcategory.category == page.category %}}
                                 {{% assign posts = subsubcategory.posts %}}
                                 {{% break %}}
                             {{% endif %}}
                         {{% endfor %}}
                     {{% endif %}}
                 {{% endfor %}}
-            {{% elsif category.posts %}}
+            {{% elsif category.posts and category.category == page.category %}}
                 {{% assign posts = category.posts %}}
                 {{% break %}}
             {{% endif %}}

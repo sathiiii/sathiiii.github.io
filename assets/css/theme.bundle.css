@@ -24395,6 +24395,8 @@ p {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
   overscroll-behavior: contain;
+  touch-action: pan-y;
+  white-space: nowrap;
 }
 
 .chipset::-webkit-scrollbar { 
