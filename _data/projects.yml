@@ -1,10 +1,19 @@
+- title: "S2TPVFormer: A Spatiotemporal Transformer for 3D Semantic Occupancy Prediction"
+  id: s2tpvformer
+  description: This is a still on-going research project. More information and the code will be released later in the future.
+  thumbnail: thumbnail.gif
+  highlight: true
+  scope: Autonomous 3D Perception
+  technologies: Pytorch
+  year: 2023
+  url:
 - title: "forté: The Remote Keyboard Tutoring System"
   id: remote-keyboard-tutoring-system
   description: forté is a web-based system that can be attached to any (electronic) keyboard synthesizer through a MIDI connector. Once our system is connected to the keyboard, the user can interactively learn, play or teach in combination with the web application that we provide.
   thumbnail: thumbnail.gif
   highlight: true
   scope: Embedded Systems
-  technologies:
+  technologies: C++
   year: 2021
   url: https://cepdnaclk.github.io/e17-3yp-remote-keyboard-tutoring-system/
 - title: Sobriety Detection using Mobile Phone Gyroscope Data
@@ -38,7 +47,7 @@
   id: fractals-generator
   description: This is the first project for the 2nd year course CO225 (Introduction to Java Programming). The aim of the project was to build a GUI application that can plot two of the most popular fractals, Mandelbrot set and the Julia set using inheritance as much as possible.
   thumbnail: thumbnail.png
-  highlight: true
+  highlight: false
   scope: Computer Graphics
   technologies: Java
   year: 2020
@@ -47,7 +56,7 @@
   id: compiler-for-cool-programming-language
   description: This is the final project for the 3rd year course CO521 (Compiler Design). The aim of the project was to build a compiler for the COOL programming language. The compiler was developed using C++ and Flex.
   thumbnail: thumbnail.png
-  highlight: true
+  highlight: false
   scope: Compiler Design
   technologies: C++, Flex
   year: 2021
