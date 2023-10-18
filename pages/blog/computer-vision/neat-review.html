@@ -1,0 +1,57 @@
+---
+layout: default
+title: How NEAT is Transforming the way we think about Autonomous Driving
+permalink: /blog/computer-vision/neat-review/
+tags: ['Computer Vision', 'Autonomous Driving']
+image: "/assets/images/blog/computer-vision/neat-review/cover.jpg"
+default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
+---
+
+<!-- Main Section-->
+<section class="container py-3 " data-scroll-section>
+    <!-- Page Content Goes Here -->
+
+    <div class="container">
+        <p data-scroll data-scroll-speed="2" data-scroll-position="top" class="my-0"><a href="/" class="text-decoration-none">Home</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog" class="text-decoration-none">Blog</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog/computer-vision/" class="text-decoration-none">Posts on Computer Vision</a></p>
+        <h1 class="display-3 mb-2" data-scroll data-scroll-speed="2" data-scroll-position="top">{{ page.title }}</h1>
+        <div class="d-flex flex-row justify-content-between">
+            <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
+            {% for tag in page.tags %}
+                <span class='me-2'>{{ tag }}</span>
+                {% if forloop.last == false %}
+                    &middot;
+                {% endif %}
+            {% endfor %}
+            </p>
+            <p class="subtitle-sm text-center" data-scroll data-scroll-speed="2" data-scroll-position="top">
+                <i class="bi bi-clock"></i>
+                <span class='me-2'>5 min read</span>
+            </p>
+        </div>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 1.8rem;">Autonomous driving, fueled by AI and computer vision, is progressing, aiming for safer transportation. Challenges remain in complex traffic scenarios. NEAT introduces valuable concepts for autonomous driving advancement.</p>
+    </div>
+
+    {% capture cover_img %}
+        {% file_exists {{ page.image | relative_url }} %}
+    {% endcapture %}
+    {% if cover_img contains "true" %}
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ page.image | relative_url }}')"></div>
+    {% else %}
+        {% assign rand = "now" | date: "%s%N" | modulo: 3 %}
+        {% assign cover_imgs = page.default_cover_imgs %}
+        <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}')"></div>
+    {% endif %}
+
+
+    <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
+    <div class="col text-center">
+        <h4 class="text-muted">This blog post will be available soon.</h4>
+    </div>
+</div>
+
+    <!-- /Page Content -->
+</section>

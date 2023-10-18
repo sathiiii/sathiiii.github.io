@@ -11,64 +11,48 @@
     tags: ["A* Search", "Heuristics", "Rubik's Cube"]
     category: "DSA"
     image: /assets/images/blog/data-structures-and-algorithms/solving-a-pocket-cube/cover.jpg
-- category: "Machine Learning"
-  description: "Blog posts related to Machine Learning"
+- category: "Computer Vision"
+  description: "Blog posts related to Computer Vision"
   icon: ""
-  permalink: /blog/machine-learning/
-  title: "Posts on Machine Learning"
-- category: "Past IEEEXtreme Challenges"
-  description: "Deeper dive into past IEEEXtreme challenges and their solutions"
+  permalink: /blog/computer-vision/
+  title: "Posts on Computer Vision"
+  posts:
+  - title: "How NEAT is Transforming the way we think about Autonomous Driving"
+    summary: Autonomous driving, fueled by AI and computer vision, is progressing, aiming for safer transportation. Challenges remain in complex traffic scenarios. NEAT introduces valuable concepts for autonomous driving advancement.
+    permalink: /blog/computer-vision/neat-review/
+    tags: ["Computer Vision", "Autonomous Driving"]
+    image: /assets/images/blog/computer-vision/neat-review/cover.jpg
+    category: "Computer Vision"
+  - title: "Review: 3D Scene Understanding and Reasoning"
+    summary: 
+    permalink: /blog/computer-vision/3d-scene-understanding-and-reasoning/
+    tags: ["Computer Vision", "Autonomous Driving"]
+    image: /assets/images/blog/computer-vision/3d-scene-understanding-and-reasoning/cover.jpg
+    category: "Computer Vision"
+- category: "Competitive Programming Challenges"
+  description: "Deeper dive into interesting CP challenges that I've attempted"
   icon: ""
-  permalink: /blog/past-ieeeextreme-challenges/
-  title: "Posts on Past IEEEXtreme Challenges"
-  subcategories:
-  - category: "IEEEXtreme 11.0"
-    description: "Deeper dive into IEEEXtreme 11.0 problems and their solutions"
-    icon: ""
-    permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-11-0/
-    title: "Posts on IEEEXtreme 11.0"
-  - category: "IEEEXtreme 12.0"
-    description: "Deeper dive into IEEEXtreme 12.0 problems and their solutions"
-    icon: ""
-    permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-12-0/
-    title: "Posts on IEEEXtreme 12.0"
-  - category: "IEEEXtreme 13.0"
-    description: "Deeper dive into IEEEXtreme 13.0 problems and their solutions"
-    icon: ""
-    permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-13-0/
-    title: "Posts on IEEEXtreme 13.0"
-  - category: "IEEEXtreme 14.0"
-    description: "Deeper dive into IEEEXtreme 14.0 problems and their solutions"
-    icon: ""
-    permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/
-    title: "Posts on IEEEXtreme 14.0"
-    posts:
-    - title: "Back to Square 1"
-      date: 2020-10-15
-      summary: Solving this problem is very easy and only requires a few lines of code if you know what Markov Chains are. After modeling the problem as a Markov Chain, the solution is just a matter of finding the expected number of steps required to reach the desired state.
-      permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/back-to-square-1/
-      tags: ["Markov Chains", "Probability Theory"]
-      category: "IEEEXtreme 14.0"
-      image: /assets/images/blog/ieeeextreme-14-0/back-to-square-1/cover.jpg
-    - title: "Fibonacci"
-      date: 2020-10-28
-      summary: Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.
-      permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/fibonacci/
-      tags: ["Dynamic Programming", "Tabulation", "Fibonacci"]
-      category: "IEEEXtreme 14.0"
-      image: /assets/images/blog/ieeeextreme-14-0/fibonacci/cover.jpg
-    - title: "Kabloom"
-      date: 2020-10-14
-      summary: This problem can be solved using Dynamic Programming. The idea is to find the optimal alignment of two strings (i.e. edit distance) that maximizes the cost of the alignment.
-      permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/kabloom/
-      tags: ["Dynamic Programming", "Edit Distance"]
-      category: "IEEEXtreme 14.0"
-      image: /assets/images/blog/ieeeextreme-14-0/kabloom/cover.jpg
-- category: "Hackerrank Challenges"
-  description: "Deeper dive into Hackerrank challenges and their solutions"
-  icon: ""
-  permalink: /blog/hackerrank-challenges/
-  title: "Posts on Hackerrank Challenges"
+  permalink: /blog/cp-challenges/
+  title: "Posts on Competitive Programming Challenges"
+  posts:
+  - title: "Back to Square 1"
+    date: 2020-10-15
+    summary: Solving this problem is very easy and only requires a few lines of code if you know what Markov Chains are. After modeling the problem as a Markov Chain, the solution is just a matter of finding the expected number of steps required to reach the desired state.
+    permalink: /blog/cp-challenges/back-to-square-1/
+    tags: ["IEEEXtreme 14.0", "Markov Chains", "Probability Theory"]
+    image: /assets/images/blog/cp-challenges/back-to-square-1/cover.jpg
+  - title: "Fibonacci"
+    date: 2020-10-28
+    summary: Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.
+    permalink: /blog/cp-challenges/fibonacci/
+    tags: ["IEEEXtreme 14.0", "Dynamic Programming", "Tabulation", "Fibonacci"]
+    image: /assets/images/blog/cp-challenges/fibonacci/cover.jpg
+  - title: "Kabloom"
+    date: 2020-10-14
+    summary: This problem can be solved using Dynamic Programming. The idea is to find the optimal alignment of two strings (i.e. edit distance) that maximizes the cost of the alignment.
+    permalink: /blog/cp-challenges/kabloom/
+    tags: ["IEEEXtreme 14.0", "Dynamic Programming", "Edit Distance"]
+    image: /assets/images/blog/cp-challenges/kabloom/cover.jpg
 - category: "GPU Programming with CUDA"
   description: "Blog posts related to GPU Programming with CUDA"
   icon: ""

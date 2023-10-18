@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Fibonacci
-permalink: /blog/past-ieeeextreme-challenges/ieeeextreme-14-0/fibonacci/
-tags: ['Dynamic Programming', 'Tabulation', 'Fibonacci']
-image: "/assets/images/blog/ieeeextreme-14-0/fibonacci/cover.jpg"
+title: Kabloom
+permalink: /blog/cp-challenges/kabloom/
+tags: ['Dynamic Programming', 'Edit Distance']
+image: "/assets/images/blog/cp-challenges/kabloom/cover.jpg"
 default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
 ---
 
@@ -18,7 +18,7 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
         <i class="fa fa-angle-right"></i>
 <a href="/blog/past-ieeeextreme-challenges" class="text-decoration-none">Past IEEEXtreme Challenges</a>
         <i class="fa fa-angle-right"></i>
-<a href="/blog/past-ieeeextreme-challenges/ieeeextreme-14-0/" class="text-decoration-none">Posts on IEEEXtreme 14.0</a></p>
+<a href="/blog/cp-challenges/" class="text-decoration-none">Posts on IEEEXtreme 14.0</a></p>
         <h1 class="display-3 mb-2" data-scroll data-scroll-speed="2" data-scroll-position="top">{{ page.title }}</h1>
         <div class="d-flex flex-row justify-content-between">
             <p class="subtitle-sm" data-scroll data-scroll-speed="2" data-scroll-position="top">
@@ -34,7 +34,7 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
                 <span class='me-2'>5 min read</span>
             </p>
         </div>
-        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 1.8rem;">Here I will discuss the most efficient way to calculate the nth Fibonacci under modulo. This is a typical Fibonacci problem, but with a twist. The twist comes because of the modulo operation. This causes the fibonacci sequence to repeat itself after a certain point.</p>
+        <p class="text-muted" data-scroll data-scroll-speed="2" data-scroll-position="top" style="font-size: 1.8rem;">This problem can be solved using Dynamic Programming. The idea is to find the optimal alignment of two strings (i.e. edit distance) that maximizes the cost of the alignment.</p>
     </div>
 
     {% capture cover_img %}
@@ -47,7 +47,7 @@ default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
         {% assign cover_imgs = page.default_cover_imgs %}
         <div class="mt-5 bg-img-cover fade-in-up" data-scroll data-scroll-position="top" style="background-image: url('{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}')"></div>
     {% endif %}
-    <p class="text-muted my-2" style="float: right;">Photo by <a href="https://unsplash.com/@milasanpaul?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Paul Milasan</a> on <a href="https://unsplash.com/s/photos/fibonacci?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
 
     <div class="row align-items-center justify-content-center mt-8" data-scroll data-scroll-position="bottom">
     <div class="col text-center">

@@ -1,0 +1,83 @@
+---
+layout: default
+title: Posts on Computer Vision
+category: Computer Vision
+permalink: /blog/computer-vision/
+default_cover_imgs: ["cover1.jpg", "cover2.jpg", "cover3.jpg"]
+---
+
+<!-- Main Section-->
+<section class="container py-3 " data-scroll-section>
+    <!-- Page Content Goes Here -->
+
+    <h3 data-scroll data-scroll-speed="2" data-scroll-position="top" class="text-muted" style="font-size: 1.8rem;">
+        <a href="/" class="text-decoration-none">Home</a>
+        <i class="fa fa-angle-right"></i>
+<a href="/blog" class="text-decoration-none">Blog</a>
+        <i class="fa fa-angle-right"></i>
+
+    </h3>
+    <h1 class="display-3 mb-5" data-scroll data-scroll-speed="2" data-scroll-position="top">{{ page.title }}</h1>
+
+    <div class="row g-8" data-scroll data-scroll-position="bottom">
+        {% assign blog_data = site.data.blog %}
+        {% assign posts = nil %}
+        {% for category in blog_data %}
+            {% if category.subcategories %}
+                <!-- Only two levels of subcategories are assumed -->
+                {% for subcategory in category.subcategories %}
+                    {% if subcategory.posts and subcategory.category == page.category %}
+                        {% assign posts = subcategory.posts %}
+                        {% break %}
+                    {% endif %}
+                    {% if subcategory.subcategories %}
+                        {% for subsubcategory in subcategory.subcategories %}
+                            {% if subsubcategory.posts and subsubcategory.category == page.category %}
+                                {% assign posts = subsubcategory.posts %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% elsif category.posts and category.category == page.category %}
+                {% assign posts = category.posts %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% for post in posts %}
+        {% assign remainder = forloop.index | modulo: 3 %}
+            {% if remainder == 0 %}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-right">
+            {% else if remainder == 1 %}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-down">
+            {% else %}
+            <div data-scroll data-scroll-position="bottom" class="col-12 col-md-4 fade-in-left">
+            {% endif %} 
+                <div class="position-relative">
+                    <a class="link-cover" href="{{ post.permalink }}">
+                        <picture>
+                            {% capture cover_img %}
+                                {% file_exists {{ post.image | relative_url }} %}
+                            {% endcapture %}
+                            {% if cover_img contains "true" %}
+                                <img class="img-fluid" src='{{ post.image | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px; object-fit: cover; height: 200px; width: 100%;" />
+                            {% else %}
+                                {% assign rand = "now" | date: "%s%N" | modulo: 3 %}
+                                {% assign cover_imgs = page.default_cover_imgs %}
+                                <img class="img-fluid" src='{{ cover_imgs[rand] | prepend: "/assets/images/projects/default/" | relative_url }}' alt="{{ post.title }}" style="border-radius: 10px;  object-fit: cover; height: 200px; width: 100%;" />
+                            {% endif %}
+                        </picture>
+                    </a>
+                    <p class="subtitle-xs mb-0 mt-4">
+                        <span class='me-2'>{{ post.tags[0] }}</span> &middot; <span class='ms-2'>{{ post.tags[1] }}</span>
+                    </p>
+                    <p class="fw-bolder lead mb-3 mt-2">{{ post.title }}</p>
+                    <p class="small text-muted mb-2">{{ post.summary }}</p>
+                    <a class="link-body" href="{{ post.permalink }}">See Post</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- /Page Content -->
+</section>
