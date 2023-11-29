@@ -1,6 +1,6 @@
 - title: "S2TPVFormer: A Spatiotemporal Transformer for 3D Semantic Occupancy Prediction"
   id: s2tpvformer
-  description: Accurate and comprehensive 3D scene understanding and reasoning are pivotal for the development of robotic and autonomous driving systems. The study focuses on advancing 3D scene understanding in the scope of 3D Semantic Occupancy Prediction, emphasizing spatial and temporal reasoning as key components. Leveraging TPV (Tri-Perspective View) representation, the our spatiotemporal encoder generates temporally rich embeddings, fostering coherent occupancy predictions. The study proposes a novel Temporal Cross-View Hybrid Attention (TCVHA) mechanism, enabling the exchange of spatiotemporal information across TPV views.
+  description: Accurate and comprehensive 3D scene understanding and reasoning are pivotal for the development of robotic and autonomous driving systems. The study focuses on advancing 3D scene understanding in the scope of 3D Semantic Occupancy Prediction, emphasizing spatial and temporal reasoning as key components. Leveraging TPV (Tri-Perspective View) representation, our spatiotemporal encoder generates temporally rich embeddings, fostering coherent occupancy predictions. The study proposes a novel Temporal Cross-View Hybrid Attention (TCVHA) mechanism, enabling the exchange of spatiotemporal information across TPV views.
   thumbnail: thumbnail.gif
   highlight: true
   scope: 3D Percecption
