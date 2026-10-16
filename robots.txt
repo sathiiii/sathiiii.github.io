@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sathiiii.github.io/sitemap.xml

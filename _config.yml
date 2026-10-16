@@ -1,42 +1,10 @@
 title: Sathira Silva
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: sathiiii
-github_username:  sathiiii
-
-# Build settings
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-# Google Analytics Tracking (optional)
-ga_tracking:
-ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
-
-permalink: pretty
+url: "https://sathiiii.github.io"
+baseurl: ""
 exclude:
-  [
-    "node_modules/",
-    "*.gemspec",
-    "*.gem",
-    "Gemfile",
-    "Gemfile.lock",
-    "package.json",
-    "package-lock.json",
-    "script/",
-    "LICENSE.txt",
-    "lib/",
-    "bin/",
-    "README.md",
-    "Rakefile",
-    "graphic_templates",
-    "*.py",
-    "*.sh",
-    "*.yml"
-  ]
-
-kramdown:
-  syntax_highlighter_opts:
-    block:
-    line_numbers: false
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - vendor
+  - node_modules
